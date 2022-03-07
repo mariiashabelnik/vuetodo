@@ -3,6 +3,7 @@ import { ref } from "vue";
 
 const todoText = ref("");
 const todoList = ref([]);
+
 function add() {
   const tmp = { task: todoText.value, completed: false };
   todoList.value.push(tmp);
@@ -28,6 +29,11 @@ function removeTask(clickIndex) {
 </script>
 
 <template>
+  <video autoplay muted loop id="myVideo">
+    <source src="video_img/video.mp4" type="video/mp4" />
+    Your browser does not support HTML5 video.
+  </video>
+
   <div class="content">
     <h1>Todo</h1>
 
@@ -35,12 +41,12 @@ function removeTask(clickIndex) {
       <input v-model="todoText" name="todoText" autocomplete="off" />
       <button>Add</button>
     </form>
-    <hr>
+
     <ul>
       <li
         v-for="(todo, index) in todoList"
         :key="index"
-        :class="{ done: todo.completed }"
+        :class="{ completed: todo.completed }"
       >
         <input
           @click="toggleTask(index)"
@@ -59,9 +65,37 @@ function removeTask(clickIndex) {
 
 <style>
 .content {
-  width: 600px;
-  margin: 0 auto;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  width: 400px;
+  /*-webkit-box-shadow: 0px 0px 45px -3px rgba(84, 92, 91, 0.44);
+  -moz-box-shadow: 0px 0px 45px -3px rgba(84, 92, 91, 0.44);
+  box-shadow: 0px 0px 45px -3px rgba(84, 92, 91, 0.44);*/
+  background-color: rgba(94, 94, 94, 0.507);
+  z-index: 100;
+  padding: 1em;
+  margin: 1em;
+  border: 2px solid white;
+}
 
+.content h1 {
+  text-align: center;
+  color: white;
+}
+#myVideo {
+  position: fixed;
+  display: block;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: contain;
+
+  z-index: 1;
+  filter: blur(1px);
+  -webkit-filter: blur(1px);
 }
 form {
   display: flex;
@@ -80,7 +114,7 @@ li {
   justify-content: space-between;
 }
 
-.done span {
+.completed span {
   text-decoration: line-through;
 }
 </style>
