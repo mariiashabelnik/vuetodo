@@ -30,7 +30,7 @@ function removeTask(clickIndex) {
 
 <template>
   <video autoplay muted loop id="myVideo">
-    <source src="video_img/video.mp4" type="video/mp4" />
+    <source src="/video_img/video.mp4" type="video/mp4" />
     Your browser does not support HTML5 video.
   </video>
 
