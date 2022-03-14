@@ -26,20 +26,25 @@ function removeTask(clickIndex) {
     return true;
   });
 }
+
+function removeAllTask(clickIndex) {
+  todoList.value = [];
+}
 </script>
 
 <template>
-  <video autoplay muted loop id="myVideo">
-    <source src="/video_img/video.mp4" type="video/mp4" />
-    Your browser does not support HTML5 video.
-  </video>
+  <div class="box">
+    <video autoplay muted loop id="myVideo">
+      <source src="/video_img/video.mp4" type="video/mp4" />
+      Your browser does not support HTML5 video.
+    </video>
+  </div>
 
   <div class="content">
-    <h1>Todo</h1>
-
+    <h1>Tasks for today</h1>
     <form @submit.prevent="add()">
       <input v-model="todoText" name="todoText" autocomplete="off" />
-      <button>Add</button>
+      <button class="add">+</button>
     </form>
 
     <ul>
@@ -51,59 +56,114 @@ function removeTask(clickIndex) {
         <input
           @click="toggleTask(index)"
           type="checkbox"
-          id="checkbox"
+          class="largerCheckbox"
           v-model="todo.completed"
         />
 
         <span>{{ todo.task }}</span>
 
-        <button @click="removeTask(index)">X</button>
+        <button @click="removeTask(index)" class="removeTask">-</button>
       </li>
     </ul>
+
+    <button @click="removeAllTask" class="removeAll">Clean All</button>
   </div>
 </template>
 
-<style>
-.content {
-  position: fixed;
-  right: 0px;
-  top: 0px;
-  bottom: 0px;
-  width: 400px;
-  /*-webkit-box-shadow: 0px 0px 45px -3px rgba(84, 92, 91, 0.44);
-  -moz-box-shadow: 0px 0px 45px -3px rgba(84, 92, 91, 0.44);
-  box-shadow: 0px 0px 45px -3px rgba(84, 92, 91, 0.44);*/
-  background-color: rgba(94, 94, 94, 0.507);
-  z-index: 100;
-  padding: 1em;
-  margin: 1em;
-  border: 2px solid white;
-}
 
-.content h1 {
-  text-align: center;
-  color: white;
+
+
+
+<style>
+.box {
+  width: 100%;
+  height: 100%;
 }
 #myVideo {
   position: fixed;
   display: block;
-  right: 0;
-  bottom: 0;
   min-width: 100%;
   min-height: 100%;
   object-fit: contain;
-
   z-index: 1;
-  filter: blur(1px);
-  -webkit-filter: blur(1px);
+  /*filter: blur(1px);
+  -webkit-filter: blur(3px);*/
 }
+.content {
+  position: fixed;
+  display: block;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  width: 40%;
+  -webkit-box-shadow: 0px 0px 45px -3px rgba(84, 92, 91, 0.44);
+  -moz-box-shadow: 0px 0px 45px -3px rgba(84, 92, 91, 0.44);
+  box-shadow: 0px 0px 45px -3px rgba(84, 92, 91, 0.44);
+  background-color: rgba(255, 255, 255, 0.317);
+  z-index: 100;
+  padding: 1em;
+  margin: 1em;
+  border-radius: 10px;
+  backdrop-filter: blur(2px);
+}
+
+.content h1 {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: x-large;
+}
+
 form {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  font-family: "Gill Sans", sans-serif;
 }
+
+input.largerCheckbox {
+  transform: scale(2);
+}
+
 form input {
-  width: 70%;
+  width: 85%;
+  border-radius: 10px;
+  height: 2em;
+  font-family: "Gill Sans", sans-serif;
+  text-transform: uppercase;
+  border-style: none;
+  border: 1px solid rgba(0, 0, 0, 0.481);
 }
+.add {
+  width: 7%;
+  border-radius: 60px;
+  background-color: rgba(254, 232, 66, 0.735);
+  border: 1px solid gray;
+  padding: 0;
+}
+
+.removeTask {
+  width: 4%;
+  border-radius: 60px;
+  background-color: rgba(66, 226, 254, 0.735);
+  border: 1px solid gray;
+  padding: 0;
+  transform: scale(1.5);
+}
+
+.removeAll {
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.481);
+  padding: 0.5em 3em;
+  bottom: 0;
+  margin: 5px 20px;
+  text-align: center;
+  display: block;
+  width: 30%;
+  text-align: center;
+  font-size: small;
+}
+
 ul {
   list-style-type: none;
   padding-inline-start: 0;
@@ -112,9 +172,14 @@ ul {
 li {
   display: flex;
   justify-content: space-between;
+  font-family: "Gill Sans", sans-serif;
+  text-transform: uppercase;
+  align-items: center;
+  line-height: 2em;
 }
 
 .completed span {
   text-decoration: line-through;
+  color: gray;
 }
 </style>
