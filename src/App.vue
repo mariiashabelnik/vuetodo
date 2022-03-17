@@ -120,6 +120,8 @@ form {
   display: flex;
   justify-content: space-between;
   font-family: "Gill Sans", sans-serif;
+  align-items: center;
+  flex-direction: row;
 }
 
 input.largerCheckbox {
@@ -127,7 +129,7 @@ input.largerCheckbox {
 }
 
 form input {
-  width: 85%;
+  width: 80%;
   border-radius: 10px;
   height: 2em;
   font-family: "Gill Sans", sans-serif;
@@ -135,22 +137,18 @@ form input {
   border-style: none;
   border: 1px solid rgba(0, 0, 0, 0.481);
 }
+
 .add {
-  width: 7%;
   border-radius: 60px;
   background-color: rgba(254, 232, 66, 0.735);
   border: 1px solid gray;
-  padding: 0;
   cursor: pointer;
 }
 
 .removeTask {
-  width: 4%;
   border-radius: 60px;
   background-color: rgba(66, 226, 254, 0.735);
   border: 1px solid gray;
-  padding: 0;
-  transform: scale(1.5);
   cursor: pointer;
 }
 
