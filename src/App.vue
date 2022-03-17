@@ -75,6 +75,9 @@ function removeAllTask(clickIndex) {
 
 
 <style>
+body {
+  margin: 0;
+}
 .box {
   width: 100%;
   height: 100%;
@@ -102,14 +105,12 @@ function removeAllTask(clickIndex) {
   background-color: rgba(255, 255, 255, 0.317);
   z-index: 100;
   padding: 1em;
-  margin: 1em;
-  border-radius: 10px;
   backdrop-filter: blur(2px);
 }
 
 .content h1 {
   text-align: center;
-  color: rgb(0, 0, 0);
+  color: 3400ee;
   font-family: Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   font-size: x-large;
@@ -140,6 +141,7 @@ form input {
   background-color: rgba(254, 232, 66, 0.735);
   border: 1px solid gray;
   padding: 0;
+  cursor: pointer;
 }
 
 .removeTask {
@@ -149,19 +151,36 @@ form input {
   border: 1px solid gray;
   padding: 0;
   transform: scale(1.5);
+  cursor: pointer;
 }
 
 .removeAll {
   border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.481);
+  border: none;
   padding: 0.5em 3em;
   bottom: 0;
-  margin: 5px 20px;
   text-align: center;
   display: block;
-  width: 30%;
+  width: 20%;
   text-align: center;
   font-size: small;
+  position: relative;
+  margin: auto;
+  margin-top: 10em;
+  box-shadow: 0px 4px 3px 0px rgb(79, 79, 79);
+  cursor: pointer;
+  padding-left: 0px;
+  padding-right: 0;
+}
+.removeAll:hover {
+  background-color: #d16753;
+}
+
+.removeAll:active {
+  background-color: #340e0e;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+  color: white;
 }
 
 ul {
