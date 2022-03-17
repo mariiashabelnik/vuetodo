@@ -171,6 +171,7 @@ form input {
   cursor: pointer;
   padding-left: 0px;
   padding-right: 0;
+  width: 50%;
 }
 .removeAll:hover {
   background-color: #d16753;
